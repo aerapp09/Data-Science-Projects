@@ -13,7 +13,7 @@
 #your Shiny app is in a directory 
 #called my_app, run it with the 
 #following code:
-
+library(shiny)
 runApp('App-1')
 
 
@@ -24,3 +24,6 @@ runApp('App-1', display.mode = 'showcase')
 
 #census-app
 runApp('census-app',display.mode='showcase')
+
+#iris-app
+runApp('iris-app', display.mode = 'showcase')
