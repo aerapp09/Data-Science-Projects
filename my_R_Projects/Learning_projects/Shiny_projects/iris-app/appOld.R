@@ -37,12 +37,6 @@ ui <- fluidPage(
 )
 
 # Define server logic ----
-plot(
-  x = species$Petal.Length,
-  y= species$Petal.Width
-)
-
-head(vir)
 server <- function(input, output) {
   output$plot <- renderPlot({
     species <- filter(iris, iris$Species == input$var)

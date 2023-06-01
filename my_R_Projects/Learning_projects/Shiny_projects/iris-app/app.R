@@ -1,11 +1,12 @@
 #iris shiny app
+#load libraries
 library(ggplot2)
 library(shiny)
+library(dplyr)
 data(iris)
 
 #output from shiny app
 
-library(shiny)
 
 # Define UI ----
 ui <- fluidPage(
@@ -16,7 +17,7 @@ ui <- fluidPage(
       helpText("Create a scatter plot with the Iris 
                species' petal width on x axis and petal 
                length on the y axis."),
-      checkboxGroupInput("var",
+      checkboxGroupInput(as.data.frame("var"),
                          label= 'Choose species to display',
                          choices = c("setosa",
                                      "versicolor",
@@ -37,15 +38,13 @@ ui <- fluidPage(
 )
 
 # Define server logic ----
-plot(
-  x = species$Petal.Length,
-  y= species$Petal.Width
-)
 
-head(vir)
 server <- function(input, output) {
   output$plot <- renderPlot({
-    species <- filter(iris, iris$Species == input$var)
+    data<- switch(input$var,
+                  'setosa' = filter(iris, iris$Species == 'setosa'),
+                  'versicolor' = filter(iris, iris$Species == 'versicolor'),
+                  'virginica' = filter(iris, iris$Species == 'virginica'))
     color<- switch(input$var,
                    'setosa' = 'purple',
                    'versicolor' = 'black',
@@ -54,7 +53,7 @@ server <- function(input, output) {
     max<- (input$range[2])
     
     ggplot(
-      data=species,
+      data = data,
       aes(x= Petal.Width, y=Petal.Length)) +
       geom_point(color=color) +
       ggtitle('Petal Length vs Petal Width') +
