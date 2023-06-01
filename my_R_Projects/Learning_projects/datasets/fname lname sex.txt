@@ -1,0 +1,9 @@
+fname lname sex
+andy brenn male
+harry truman male
+lucy moran female
+dale cooper male
+shelly jons female
+audrey horne female
+bob Marx 
+Donna Heyward female
