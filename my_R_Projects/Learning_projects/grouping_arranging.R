@@ -1,6 +1,6 @@
 
 cars <-read.table(
-  file = 'cars.txt',
+  file = 'datasets/cars.txt',
   header=TRUE,
   quote = "\""
 )
