@@ -1,23 +1,23 @@
 # Welcome to my Data-Science-Projects
 ## A repository for my Data Science Projects
 This is a repository for my projects coded in R, Python, and Jupyter notebook. It contains many useful projects including:
-* Statistical analysis of many datasets.
+1. Statistical analysis of many datasets.
 - Examples include the classic Titanic dataset where data about the survivors of the titanic disaster can be used to make graph and discover conclusions about demographics.
 - Financial conclusions of the diamond trade. I analyze the aspects of the diamond market see for example what 'cut' has is the most popular.
 - Housing data of San Francisco. How does proximity to the ocean affect house prices? That and more in this dataset
 
-* I created 4 shiny apps that let the user change the data and see it reflected in a visual.
+2.  I created 4 shiny apps that let the user change the data and see it reflected in a visual.
 - Compare the census demographics based on race for the U.S.
 - Compare Iris petal length and width, and see how this simple aspect can be used for machine learning
 
-* Machine learning using the data sets already mentioned to make predictions based on given variables.
+3.  Machine learning using the data sets already mentioned to make predictions based on given variables.
 
 ## This repository has several uses:
-    -See a few ways I cleaned and munged data in R and Python. (\myJupyterNotebooks and \my_R_Projects)
-    -Learn about the various packages and uses between the two (\myJupyterNotebooks and \my_R_Projects)
-        +For example Matplotlib's extensive use in Python and Shiny apps in R.
-    -Learn about how to do statistical analysis (\myJupyterNotebooks)
-    -Learn how to create apps in Shiny (\my_R_Projects\Shiny_projects)
+- See a few ways I cleaned and munged data in R and Python. (\myJupyterNotebooks and \my_R_Projects)
+- Learn about the various packages and uses between the two (\myJupyterNotebooks and \my_R_Projects)
+- For example Matplotlib's extensive use in Python and Shiny apps in R.
+- Learn about how to do statistical analysis (\myJupyterNotebooks)
+- Learn how to create apps in Shiny (\my_R_Projects\Shiny_projects)
 
 ## How Users can get started with the project
 1. 1. Clone the repository. Click [repository home page](https://github.com/aerapp09/Data-Science-Projects) 'Repository Home')
