@@ -38,3 +38,5 @@ Message me on [LinkedIn](https://www.linkedin.com/in/austin-develops/) or throug
 
 ## Who maintains and contributes to the project?
 I maintain and am the main contributor to this project. Feel free to submit changes and I will take a look. 
+
+## Thanks for stopping by! 
