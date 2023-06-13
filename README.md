@@ -7,8 +7,8 @@ This is a repository for my projects coded in R, Python, and Jupyter notebook. I
    - Housing data of San Francisco. How does proximity to the ocean affect house prices? That and more in this dataset
 
 2.  I created 4 shiny apps that let the user change the data and see it reflected in a visual.
-   - Compare the census demographics based on race for the U.S.
-   - Compare Iris petal length and width, and see how this simple aspect can be used for machine learning
+      - Compare the census demographics based on race for the U.S.
+      - Compare Iris petal length and width, and see how this simple aspect can be used for machine learning
 
 3.  Machine learning using the data sets already mentioned to make predictions based on given variables.
 
