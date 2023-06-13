@@ -13,8 +13,8 @@ This is a repository for my projects coded in R, Python, and Jupyter notebook. I
 3.  Machine learning using the data sets already mentioned to make predictions based on given variables.
 
 ## This repository has several uses:
-- See a few ways I cleaned and munged data in R and Python. [link](\myJupyterNotebooks and \my_R_Projects)
-- Learn about the various packages and uses between the two [link](\myJupyterNotebooks and \my_R_Projects)
+- See a few ways I cleaned and munged data in R and Python. [link](\my_R_Projects)
+- Learn about the various packages and uses between the two [link](\myJupyterNotebooks)
 - For example Matplotlib's extensive use in Python and Shiny apps in R.
 - Learn about how to do statistical analysis [link](\myJupyterNotebooks)
 - Learn how to create apps in Shiny [link](\my_R_Projects\Shiny_projects)
