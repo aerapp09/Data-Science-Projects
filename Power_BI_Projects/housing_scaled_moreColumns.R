@@ -16,9 +16,6 @@ table(is.na(housing$total_bedrooms))
 #covert null values to median
 housing$total_bedrooms[is.na(housing$total_bedrooms)] = median(housing$total_bedrooms, na.rm=TRUE)
 
-#create new data frame
-pop.house<- data.frame(matrix(ncol= 4, nrow=0)
-
 #way to rename data frame
 colnames(pop.house)[1:4] = c('population', 'households', 'total_rooms','total_bedrooms')
 

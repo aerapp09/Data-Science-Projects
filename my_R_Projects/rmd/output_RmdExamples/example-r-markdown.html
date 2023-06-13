@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>example-r-markdown.knit</title>
+
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="1-example.html">Viridis Colors</a>
+</li>
+<li>
+  <a href="3-inline.html">Terrain Colors</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<p>This post examines the features of <a
+href="http://www.rstudio.org/docs/authoring/using_markdown">R
+Markdown</a> using <a href="http://yihui.name/knitr/">knitr</a> in
+Rstudio 0.96. This combination of tools provides an exciting improvement
+in usability for <a
+href="http://stats.stackexchange.com/a/15006/183">reproducible
+analysis</a>. Specifically, this post (1) discusses getting started with
+R Markdown and <code>knitr</code> in Rstudio 0.96; (2) provides a basic
+example of producing console output and plots using R Markdown; (3)
+highlights several code chunk options such as caching and controlling
+how input and output is displayed; (4) demonstrates use of standard
+Markdown notation as well as the extended features of formulas and
+tables; and (5) discusses the implications of R Markdown. This post was
+produced with R Markdown. The source code is available here as a gist.
+The post may be most useful if the source code and displayed post are
+viewed side by side. In some instances, I include a copy of the R
+Markdown in the displayed HTML, but most of the time I assume you are
+reading the source and post side by side.</p>
+<!-- more -->
+<div id="getting-started" class="section level2">
+<h2>Getting started</h2>
+<p>To work with R Markdown, if necessary:</p>
+<ul>
+<li>Install <a href="http://www.r-project.org/">R</a></li>
+<li>Install the lastest version of <a
+href="http://rstudio.org/download/">RStudio</a> (at time of posting,
+this is 0.96)</li>
+<li>Install the latest version of the <code>knitr</code> package:
+<code>install.packages("knitr")</code></li>
+</ul>
+<p>To run the basic working example that produced this blog post:</p>
+<ul>
+<li>Open R Studio, and go to File - New - R Markdown</li>
+<li>If necessary install <code>ggplot2</code> and <code>lattice</code>
+packages:
+<code>install.packages("ggplot2"); install.packages("lattice")</code></li>
+<li>Paste in the contents of this gist (which contains the R Markdown
+file used to produce this post) and save the file with an
+<code>.rmd</code> extension</li>
+<li>Click Knit HTML</li>
+</ul>
+</div>
+<div id="prepare-for-analyses" class="section level2">
+<h2>Prepare for analyses</h2>
+<pre class="r"><code>set.seed(1234)
+library(ggplot2)
+library(lattice)</code></pre>
+</div>
+<div id="basic-console-output" class="section level2">
+<h2>Basic console output</h2>
+<p>To insert an R code chunk, you can type it manually or just press
+<code>Chunks - Insert chunks</code> or use the shortcut key. This will
+produce the following code chunk:</p>
+<p>Pressing tab when inside the braces will bring up code chunk
+options.</p>
+<p>The following R code chunk labelled <code>basicconsole</code> is as
+follows:</p>
+<pre><code>```r
+x &lt;- 1:10
+y &lt;- round(rnorm(10, x, 1), 2)
+df &lt;- data.frame(x, y)
+df
+```
+
+```
+##     x     y
+## 1   1 -0.21
+## 2   2  2.28
+## 3   3  4.08
+## 4   4  1.65
+## 5   5  5.43
+## 6   6  6.51
+## 7   7  6.43
+## 8   8  7.45
+## 9   9  8.44
+## 10 10  9.11
+```</code></pre>
+<p>The code chunk input and output is then displayed as follows:</p>
+<pre class="r"><code>x &lt;- 1:10
+y &lt;- round(rnorm(10, x, 1), 2)
+df &lt;- data.frame(x, y)
+df</code></pre>
+<pre><code>##     x     y
+## 1   1  0.52
+## 2   2  1.00
+## 3   3  2.22
+## 4   4  4.06
+## 5   5  5.96
+## 6   6  5.89
+## 7   7  6.49
+## 8   8  7.09
+## 9   9  8.16
+## 10 10 12.42</code></pre>
+</div>
+<div id="plots" class="section level2">
+<h2>Plots</h2>
+<p>Images generated by <code>knitr</code> are saved in a figures folder.
+However, they also appear to be represented in the HTML output using a
+<a href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URI
+scheme</a>. This means that you can paste the HTML into a blog post or
+discussion forum and you don’t have to worry about finding a place to
+store the images; they’re embedded in the HTML.</p>
+<div id="simple-plot" class="section level3">
+<h3>Simple plot</h3>
+<p>Here is a basic plot using base graphics:</p>
+<pre><code>```r
+plot(x)
+```
+
+&lt;img src=&quot;example-r-markdown_files/figure-html/unnamed-chunk-4-1.png&quot; width=&quot;672&quot; /&gt;</code></pre>
+<pre class="r"><code>plot(x)</code></pre>
+<p><img src="example-r-markdown_files/figure-html/simpleplot-1.png" width="672" /></p>
+<p>Note that unlike traditional Sweave, there is no need to write
+<code>fig=TRUE</code>.</p>
+</div>
+<div id="multiple-plots" class="section level3">
+<h3>Multiple plots</h3>
+<p>Also, unlike traditional Sweave, you can include multiple plots in
+one code chunk:</p>
+<pre><code>```r
+boxplot(1:10~rep(1:2,5))
+```
+
+&lt;img src=&quot;example-r-markdown_files/figure-html/unnamed-chunk-5-1.png&quot; width=&quot;672&quot; /&gt;
+
+```r
+plot(x, y)
+```
+
+&lt;img src=&quot;example-r-markdown_files/figure-html/unnamed-chunk-5-2.png&quot; width=&quot;672&quot; /&gt;</code></pre>
+<pre class="r"><code>boxplot(1:10~rep(1:2,5))</code></pre>
+<p><img src="example-r-markdown_files/figure-html/multipleplots-1.png" width="672" /></p>
+<pre class="r"><code>plot(x, y)</code></pre>
+<p><img src="example-r-markdown_files/figure-html/multipleplots-2.png" width="672" /></p>
+</div>
+<div id="ggplot2-plot" class="section level3">
+<h3><code>ggplot2</code> plot</h3>
+<p>Ggplot2 plots work well:</p>
+<pre class="r"><code>qplot(x, y, data=df)</code></pre>
+<p><img src="example-r-markdown_files/figure-html/ggplot2ex-1.png" width="672" /></p>
+</div>
+<div id="lattice-plot" class="section level3">
+<h3><code>lattice</code> plot</h3>
+<p>As do lattice plots:</p>
+<pre class="r"><code>xyplot(y~x)</code></pre>
+<p><img src="example-r-markdown_files/figure-html/latticeex-1.png" width="672" /></p>
+<p>Note that unlike traditional Sweave, there is no need to print
+lattice plots directly.</p>
+</div>
+</div>
+<div id="r-code-chunk-features" class="section level2">
+<h2>R Code chunk features</h2>
+<div id="create-markdown-code-from-r" class="section level3">
+<h3>Create Markdown code from R</h3>
+<p>The following code hides the command input (i.e.,
+<code>echo=FALSE</code>), and outputs the content directly as code
+(i.e., <code>results=asis</code>, which is similar to
+<code>results=tex</code> in Sweave).</p>
+<pre><code>Here are some dot points
+
+* The value of y[1] is 0.52
+* The value of y[2] is 1
+* The value of y[3] is 2.22</code></pre>
+<p>Here are some dot points</p>
+<ul>
+<li>The value of y[1] is 0.52</li>
+<li>The value of y[2] is 1</li>
+<li>The value of y[3] is 2.22</li>
+</ul>
+</div>
+<div id="create-markdown-table-code-from-r" class="section level3">
+<h3>Create Markdown table code from R</h3>
+<pre><code>x | y
+--- | ---
+1 | 0.52
+2 | 1
+3 | 2.22
+4 | 4.06
+5 | 5.96
+6 | 5.89
+7 | 6.49
+8 | 7.09
+9 | 8.16
+10 | 12.42</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.52</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2.22</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>4.06</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>5.96</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>5.89</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>6.49</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>7.09</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>8.16</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>12.42</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="control-output-display" class="section level3">
+<h3>Control output display</h3>
+<p>The folllowing code supresses display of R input commands (i.e.,
+<code>echo=FALSE</code>) and removes any preceding text from console
+output (<code>comment=""</code>; the default is
+<code>comment="##"</code>).</p>
+<pre><code>```
+  x    y
+1 1 0.52
+2 2 1.00
+3 3 2.22
+4 4 4.06
+5 5 5.96
+6 6 5.89
+```</code></pre>
+<pre><code>  x    y
+1 1 0.52
+2 2 1.00
+3 3 2.22
+4 4 4.06
+5 5 5.96
+6 6 5.89</code></pre>
+</div>
+<div id="control-figure-size" class="section level3">
+<h3>Control figure size</h3>
+<p>The following is an example of a smaller figure using
+<code>fig.width</code> and <code>fig.height</code> options.</p>
+<pre><code>```r
+plot(x)
+```
+
+&lt;img src=&quot;example-r-markdown_files/figure-html/unnamed-chunk-10-1.png&quot; width=&quot;288&quot; /&gt;</code></pre>
+<pre class="r"><code>plot(x)</code></pre>
+<p><img src="example-r-markdown_files/figure-html/smallplot-1.png" width="288" /></p>
+</div>
+<div id="cache-analysis" class="section level3">
+<h3>Cache analysis</h3>
+<p>Caching analyses is straightforward. Here’s example code. On the
+first run on my computer, this took about 10 seconds. On subsequent
+runs, this code was not run.</p>
+<p>If you want to rerun cached code chunks, just <a
+href="http://stackoverflow.com/a/10629121/180892">delete the contents of
+the <code>cache</code> folder</a></p>
+<pre><code>```r
+for (i in 1:5000) {
+    lm((i+1)~i)
+}
+```</code></pre>
+</div>
+</div>
+<div id="basic-markdown-functionality" class="section level2">
+<h2>Basic markdown functionality</h2>
+<p>For those not familiar with standard <a
+href="http://daringfireball.net/projects/markdown/">Markdown</a>, the
+following may be useful. See the source code for how to produce such
+points. However, RStudio does include a Markdown quick reference button
+that adequatly covers this material.</p>
+<div id="dot-points" class="section level3">
+<h3>Dot Points</h3>
+<p>Simple dot points:</p>
+<ul>
+<li>Point 1</li>
+<li>Point 2</li>
+<li>Point 3</li>
+</ul>
+<p>and numeric dot points:</p>
+<ol style="list-style-type: decimal">
+<li>Number 1</li>
+<li>Number 2</li>
+<li>Number 3</li>
+</ol>
+<p>and nested dot points:</p>
+<ul>
+<li>A
+<ul>
+<li>A.1</li>
+<li>A.2</li>
+</ul></li>
+<li>B
+<ul>
+<li>B.1</li>
+<li>B.2</li>
+</ul></li>
+</ul>
+</div>
+<div id="equations" class="section level3">
+<h3>Equations</h3>
+<p>Equations are included by using LaTeX notation and including them
+either between single dollar signs (inline equations) or double dollar
+signs (displayed equations). If you hang around the Q&amp;A site <a
+href="http://stats.stackexchange.com">CrossValidated</a> you’ll be
+familiar with this idea.</p>
+<p>There are inline equations such as <span class="math inline">\(y_i =
+\alpha + \beta x_i + e_i\)</span>.</p>
+<p>And displayed formulas:</p>
+<p><span class="math display">\[\frac{1}{1+\exp(-x)}\]</span></p>
+<p>knitr provides self-contained HTML code that calls a Mathjax script
+to display formulas. However, in order to include the script in my blog
+posts I <a href="https://gist.github.com/2716053">took the script</a>
+and incorporated it into my blogger template. If you are viewing this
+post through syndication or an RSS reader, this may not work. You may
+need to view this post on my website.</p>
+</div>
+<div id="tables" class="section level3">
+<h3>Tables</h3>
+<p>Tables can be included using the following notation</p>
+<table>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Male</td>
+<td>Blue</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Female</td>
+<td>Pink</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hyperlinks" class="section level3">
+<h3>Hyperlinks</h3>
+<ul>
+<li>If you like this post, you may wish to subscribe to <a
+href="http://feeds.feedburner.com/jeromyanglim">my RSS feed</a>.</li>
+</ul>
+</div>
+<div id="images" class="section level3">
+<h3>Images</h3>
+<p>Here’s an example image:</p>
+<div class="figure">
+<img src="http://i.imgur.com/RVNmr.jpg" alt="" />
+<p class="caption">image from redmond barry building unimelb</p>
+</div>
+</div>
+<div id="code" class="section level3">
+<h3>Code</h3>
+<p>Here is Markdown R code chunk displayed as code:</p>
+<pre><code>```r
+x &lt;- 1:10
+x
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```</code></pre>
+<p>And then there’s inline code such as <code>x &lt;- 1:10</code>.</p>
+</div>
+<div id="quote" class="section level3">
+<h3>Quote</h3>
+<p>Let’s quote some stuff:</p>
+<blockquote>
+<p>To be, or not to be, that is the question: Whether ’tis nobler in the
+mind to suffer The slings and arrows of outrageous fortune,</p>
+</blockquote>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<ul>
+<li>R Markdown is awesome.
+<ul>
+<li>The ratio of markup to content is excellent.</li>
+<li>For exploratory analyses, blog posts, and the like R Markdown will
+be a powerful productivity booster.</li>
+<li>For journal articles, LaTeX will presumably still be required.</li>
+</ul></li>
+<li>The RStudio team have made the whole process very user friendly.
+<ul>
+<li>RStudio provides useful shortcut keys for compiling to HTML, and
+running code chunks. These shortcut keys are presented in a clear
+way.</li>
+<li>The incorporated extensions to Markdown, particularly formula and
+table support, are particularly useful.</li>
+<li>Jump-to-chunk feature facilitates navigation. It helps if your code
+chunks have informative names.</li>
+<li>Code completion on R code chunk options is really helpful. See also
+<a href="http://yihui.name/knitr/options">chunk options documentation on
+the knitr website</a>.</li>
+</ul></li>
+<li>Other recent posts on R markdown include those by :
+<ul>
+<li><a
+href="http://christophergandrud.blogspot.com.au/2012/05/dynamic-content-with-rstudio-markdown.html">Christopher
+Gandrud</a></li>
+<li><a
+href="http://lamages.blogspot.com.au/2012/05/interactive-reports-in-r-with-knitr-and.html">Markcus
+Gesmann</a></li>
+<li><a href="http://rstudio.org/docs/authoring/using_markdown">Rstudio
+on R Markdown</a></li>
+<li><a href="http://yihui.name/knitr/">Yihui Xie</a>: I really want to
+thank him for developing <code>knitr</code>. He has also posted <a
+href="https://github.com/yihui/knitr/blob/master/inst/examples/knitr-minimal.Rmd">this
+example of R Markdown</a>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="questions" class="section level2">
+<h2>Questions</h2>
+<p>The following are a few questions I encountered along the way that
+might interest others. ### Annoying <code>&lt;br/&gt;</code>’s
+<strong>Question:</strong> I asked on the Rstudio discussion site: <a
+href="http://support.rstudio.org/help/discussions/problems/2329-why-does-r-markdown-to-html-insert-br-when-there-is-a-new-line-of-text">Why
+does Markdown to HTML insert <code>&lt;br/&gt;</code> on new
+lines?</a></p>
+<p><strong>Answer:</strong> I just do a find and delete on this text for
+now.</p>
+<div id="temporarily-disable-caching" class="section level3">
+<h3>Temporarily disable caching</h3>
+<p><strong>Question:</strong> I asked on StackOverflow about <a
+href="http://stackoverflow.com/q/10628665/180892">How to set cache=FALSE
+for a knitr markdown document and override code chunk settings?</a></p>
+<p><strong>Answer:</strong> Delete the cache folder. But there are other
+possible workflows.</p>
+</div>
+<div id="equivalent-of-sexpr" class="section level3">
+<h3>Equivalent of Sexpr</h3>
+<p><strong>Question:</strong> I asked on Stack Overvlow about <a
+href="http://stackoverflow.com/q/10629416/180892">whether there an R
+Markdown equivalent to Sexpr in Sweave?</a>.</p>
+<p><strong>Answer:</strong> Include the code between brackets of
+“backick r space” and “backtick”. E.g., in the source code I have
+calculated 2 + 2 = 4 .</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

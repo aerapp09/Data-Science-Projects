@@ -1,0 +1,85 @@
+
+START RESUME =
+
+Objective:
+Data scientist and Front-end Developer with a a problem solving focus on the development and use of applications. Using languages and programs to deliver solutions with a customer first approach. 
+
+Can write programs  in the following languages and utilizing following  frameworks and tools:
+
+
+ LANGUAGES:
+SQL
+R
+Python
+HTML
+Javascript
+CSS
+
+FRAMEWORKS:
+Bootstrap
+Jquery
+Node Js
+
+SOFTWARE TOOLS:
+PowerBI
+MicrosoftOS
+GIS
+Tableau
+Taleo
+
+
+PROJECT EXPERIENCE:
+Electronic Health Record System (EPIC) upgrade fix - lead on project for upgrade to prevent coding errors
+Discovered error that would lead to 10% increase in transcription errors and 25% decrease in turnaround for products. Created excel and word created docs that explained the problem.
+Tested IT created fix in an sandbox environment.
+Created operating procedure and led training for staff on new process. 
+Population Survey Database - determine  bird population feeding behavior
+Developed experiment and hypothesis  surveys to gather information from different areas.
+Wrote program in  R  to create logic and plot data as well as Excel to plot data..
+Wrote a paper explaining my findings as a practice in science writing for Field Ecology. 
+Website Projects - promoting a concert tour and a local cinema
+Utilizing Javascript, HTML Json, Jquery, and CSS created a website with features such as a rewards form to fill out, a navigation bar, slide show, and image gallery
+Created a website using only bootstrap that promoted a fictional local cinema.  
+
+
+SOFTWARE EXPERIENCE
+Coding bootcamp, the tech academy | portland, or
+Intensive data science coding bootcamp focused on machine learning, data analysis, and visualization. .
+Attending Meetup seminars to try and expand and hopefully assist with some projects.
+Hospital computing, cellnetix/ohsu | washington/oregon
+I did data entry in EPIC entering patient data which could be easily be incorrect so this required a lot of care and attention to detail. I had to take a course to get certified for it.
+I taught coworkers  how to navigate new features of programs, mainly Epic, and solve problems relating to doctor’s orders, patient and health  info. 
+Streamlined quality control with Python.
+
+
+OTHER EXPERIENCE:
+Medical lab tech, cytogenetics - oregon health science university | nov 2021 – mar  2023
+Implemented a label process that reduced transcription errors by half. 
+Lead change to chemical making procedure to increase volume and reduce prep time.
+Actively followed up with suppliers to reduce supply chain problems.
+lab technical assistant, immunology - ohsu | aug 2019 – nov 2021 
+As section safety officer conducted  safety trainings and audits.
+Actively consulted with external and internal customers to solve issues over phone and email to reduce chronic issues by half. 
+recruitment coordinator, hr - robert half| mar 2018 - may 2019 
+I did recruiting data entry using HRIS Taleo, utilized spreadsheets for stat tracking.
+Collaborated with diverse set of  internal customers over phone and email. 
+lab assistant iii, surgical pathology - cellnetix | may 2015 - jan 2018 
+I assisted customers via oral, email, and phone to navigate issues.
+Data entry of patient info, powerPath specimen info and  correct errors in Epic. 
+
+VOLUNTEERING:
+Research assistant, osu oncology lab| aug 2010- june 2012
+I assisted osteoclast research  using PCR, mainly made agarose gels.
+Research assistant, forest service | aug 2011- june 2012
+I assisted bat and frog population surveys using GIS and Excel. 
+Seasonal ranger, park service | aug 2011- june 2012
+I did entered permits electronically using the park database, greeted the public with and assisted with information on park information, nature education and safety.
+Book sorter, friends of multnomah co library | jun 2019- june 2021
+
+EDUCATION:
+b.s. degree - biology | graduated may 2013 | Ohio university
+the tech academy coding bootcamp, data science | Attending Feb 2023
+
+
+
+

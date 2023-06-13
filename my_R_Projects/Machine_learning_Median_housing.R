@@ -1,6 +1,6 @@
 library(tidyverse)
 library(reshape2)
-housing = read.csv('housing.csv')
+housing = read.csv('datasets/housing.csv')
 #see if imported correctly
 head(housing)
 #use summary to check a few things
