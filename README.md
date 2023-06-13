@@ -37,4 +37,4 @@ This is a repository for my projects coded in R, Python, and Jupyter notebook. I
 Message me on [LinkedIn](https://www.linkedin.com/in/austin-develops/) or through my [email](aerapp09@gmail.com).
 
 ## Who maintains and contributes to the project?
-    -Right now only I do. I hope to have a project for other to contribute to soon. 
+I maintain and am the main contributor to this project. Feel free to submit changes and I will take a look. 
