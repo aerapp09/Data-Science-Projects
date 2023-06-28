@@ -2,7 +2,7 @@
 ## A repository for my Data Science Projects
 This is a repository for data analysis, machine learning and visualization in R, Python, and Jupyter notebook. It contains many useful projects including:
 1. Statistical analysis:
-   - The classic Titanic dataset (machine learning in R) make conclusions about demographics and predict survival using Random Forest.
+   - The classic Titanic dataset cleaned, feature extraction, and machine learning in R to make conclusions about demographics and predict survival using Random Forest.
    - Financial conclusions of the diamond trade (python in jupyter) which cut is most popular? 
    - Housing in Francisco. How does proximity to the ocean affect house prices? Report in PowerBi
 
